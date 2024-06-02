@@ -11,8 +11,10 @@ pose = mpPose.Pose()
 mpDraw = mp.solutions.drawing_utils
 
 lm_list = []
-label = "BODYSWING"
-no_of_frames = 600
+# label = "HANDSWING"
+# label = "BODYSWING"
+label = "CLAPSWING"
+no_of_frames = 1200
 
 def make_landmark_timestep(results):
     print(results.pose_landmarks.landmark)

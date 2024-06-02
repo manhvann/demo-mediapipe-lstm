@@ -57,14 +57,19 @@ def detect(model, lm_list):
     global label
     lm_list = np.array(lm_list)
     lm_list = np.expand_dims(lm_list, axis=0)
-    print(lm_list.shape)
     results = model.predict(lm_list)
-    print(results)
-    if results[0][0] > 0.5:
-        label = "SWING BODY"
-    else:
-        label = "SWING HAND"
+    
+    # Tính toán nhãn dự đoán dựa trên xác suất của mỗi nhãn
+    predicted_label_index = np.argmax(results)
+    
+    # Danh sách các nhãn tương ứng với vị trí trong kết quả dự đoán
+    label_list = ["SWING HAND","SWING BODY","SWING CLAP"]
+    
+    # Lấy nhãn dự đoán từ danh sách nhãn
+    label = label_list[predicted_label_index]
+    
     return label
+
 
 
 i = 0
